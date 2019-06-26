@@ -58,9 +58,9 @@ class NTD1zxSpider(Spider):
                     if '' == bottom or '' == top or '' == name or '' == passage_url:
                         continue
                     passage.save_passage_info()
+                    log.info(name + '|' + author + ' 抓取成功!')
                 else:
                     log.warn(name + '抓取失败！')
-                log.info(name + '|' + author + ' 抓取成功!')
         log.info(self._name + '执行完成!')
 
 
