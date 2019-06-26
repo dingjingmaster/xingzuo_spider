@@ -33,9 +33,6 @@ class Spider(object):
         val = str(mid_start) + '|' + str(mid_end)
         self._seedURL[key] = val
 
-    def set_type (self, type: int):
-        self._type = type
-
     def set_seed_urls (self, urls: list):
         for info in urls:
             for_url, mid_start, mid_end, back_url = info
