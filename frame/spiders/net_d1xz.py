@@ -57,7 +57,6 @@ class NTD1zxSpider(Spider):
                     passage.set_textTop(top)
                     passage.set_textBottom(bottom)
                     passage.set_type(type)
-
                     if '' == bottom or '' == top or '' == name or '' == passage_url:
                         continue
                     passage.save_passage_info()
