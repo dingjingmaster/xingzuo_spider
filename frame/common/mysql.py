@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- encoding=utf8 -*-
-import time
-import pymysql
 import threading
+import time
+
+import pymysql
+
 from frame.common.util import Util
 from frame.log.log import log
 
@@ -16,42 +18,43 @@ class Mysql(object):
     _password = ''
     _connect = None
 
-    def set_ip(self, host: str):
+    def set_ip (self, host: str):
         self._host = host
         return self
 
-    def set_port(self, port: int):
+    def set_port (self, port: int):
         self._port = port
         return self
 
-    def set_database(self, db: str):
+    def set_database (self, db: str):
         self._db = db
         return self
 
-    def set_usr(self, usr: str):
+    def set_usr (self, usr: str):
         self._user = usr
         return self
 
-    def set_password(self, password: str):
+    def set_password (self, password: str):
         self._password = password
         return self
 
-    def connect(self):
+    def connect (self):
         self._connect = pymysql.Connect(
-            host=self._host,
-            port=self._port,
-            user=self._user,
-            db=self._db,
-            passwd=self._password,
-            charset='utf8'
+                host=self._host,
+                port=self._port,
+                user=self._user,
+                db=self._db,
+                passwd=self._password,
+                charset='utf8'
         )
         return self
 
     """ 文章 url 是否存在 """
-    def passage_info_exist(self, url) -> bool:
+
+    def passage_info_exist (self, url) -> bool:
         flag = False
         id = -1
-        msql = 'SELECT `id` FROM `article` WHERE url = "{url}";'.format(url = url)
+        msql = 'SELECT `id` FROM `article` WHERE url = "{url}";'.format(url=url)
         try:
             cursor = self._connect.cursor()
             cursor.execute(msql)
@@ -64,8 +67,9 @@ class Mysql(object):
         return flag
 
     """ 根据文章 url 插入信息 """
-    def insert_passage_info(self, title: str, author: str, pageviews: int, tim: int,\
-                            textTop: str, img: str, textBottom: str, type: int, url: str):
+
+    def insert_passage_info (self, title: str, author: str, pageviews: int, tim: int, \
+                             textTop: str, img: str, textBottom: str, type: int, url: str):
         flag = False
         id = -1
         # 检查关键字段是否存在
@@ -74,12 +78,12 @@ class Mysql(object):
         msql = 'INSERT INTO `article` (' \
                '`title`, `author`, `pageviews`, `time`, `textTop`, `img`, `textbottom`, `type`, `url`)' \
                ' VALUES ("{title}", "{author}", "{pageviews}", "{tim}", "{textTop}", "{img}", "{textBottom}",' \
-               ' "{type}", "{url}");'.format (
-            title = self._connect.escape_string(title), author = self._connect.escape_string(author),
-            pageviews = pageviews, tim = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(tim)),
-            textTop = self._connect.escape_string(textTop), img = self._connect.escape_string(img),
-            textBottom = self._connect.escape_string(textBottom), type = type,
-            url = self._connect.escape_string(url));
+               ' "{type}", "{url}");'.format(
+                title=self._connect.escape_string(title), author=self._connect.escape_string(author),
+                pageviews=pageviews, tim=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(tim)),
+                textTop=self._connect.escape_string(textTop), img=self._connect.escape_string(img),
+                textBottom=self._connect.escape_string(textBottom), type=type,
+                url=self._connect.escape_string(url));
         try:
             curosr = self._connect.cursor()
             curosr.execute(msql)

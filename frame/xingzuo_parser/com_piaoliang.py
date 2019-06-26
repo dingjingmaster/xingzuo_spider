@@ -1,25 +1,28 @@
 #!/usr/bin/env python3.6
 # -*- encoding=utf8 -*-
 import re
+
 import pyquery
-from frame.log.log import log
-from frame.common.param import *
-from frame.common.get import Get
-from frame.common.util import Util
+
 from frame.base.parser import Parser
+from frame.common.get import Get
+from frame.common.param import *
+from frame.common.util import Util
+from frame.log.log import log
 
 
 class CMPiaoliangParser(Parser):
     __doc__ = """ http://xingzuo.piaoliang.com 解析器 """
 
-    def __init__(self):
+    def __init__ (self):
         super().__init__()
         _webURL = COM_PIAOLIANG_WEB_URL
         _parserName = COM_PIAOLIANG_NAME
         log.info('name:' + self._parserName + ' url:' + self._webURL + ' 解析器安装成功!')
 
     """ 标题 """
-    def _parser_passage_title(self, doc: str) -> (bool, str):
+
+    def _parser_passage_title (self, doc: str) -> (bool, str):
         flag = False
         name = pyquery.PyQuery(doc).find('h3>a').text()
         if None is not name:
@@ -29,7 +32,8 @@ class CMPiaoliangParser(Parser):
         return flag, name.strip()
 
     """ 阅读量 """
-    def _parser_passage_read(self, doc: str) -> (bool, str):
+
+    def _parser_passage_read (self, doc: str) -> (bool, str):
         flag = False
         num = '0'
         readnum = pyquery.PyQuery(doc).find('.reads').text()
@@ -41,7 +45,8 @@ class CMPiaoliangParser(Parser):
         return flag, num.strip()
 
     """ 书籍URL """
-    def _parser_passage_url(self, doc: str) -> (bool, str):
+
+    def _parser_passage_url (self, doc: str) -> (bool, str):
         flag = False
         url = pyquery.PyQuery(doc).find('h3>a').attr('href')
         if None is not url:
@@ -51,7 +56,8 @@ class CMPiaoliangParser(Parser):
         return flag, url.strip()
 
     """ 时间 """
-    def _parser_passage_date(self, doc: str) -> (bool, str):
+
+    def _parser_passage_date (self, doc: str) -> (bool, str):
         flag = False
         tm = pyquery.PyQuery(doc).find('body>.main-wrap>.m-wrap>.main-part>.sbody>.info>.s1').text()
         if None is not tm:
@@ -63,7 +69,8 @@ class CMPiaoliangParser(Parser):
         return flag, Util.time_str_stamp(tm.strip(), "%Y-%m-%d")
 
     """ 作者名 """
-    def _parser_passage_author(self, doc: str) -> (bool, str):
+
+    def _parser_passage_author (self, doc: str) -> (bool, str):
         flag = False
         author = pyquery.PyQuery(doc).find('body>.main-wrap>.m-wrap>.main-part>.sbody>.info>.s1>small').text()
         if None is not author:
@@ -73,7 +80,8 @@ class CMPiaoliangParser(Parser):
         return flag, author.strip()
 
     """ 内容 + 图片链接 """
-    def _parser_passage_content(self, doc: str) -> (bool, str, str, str):
+
+    def _parser_passage_content (self, doc: str) -> (bool, str, str, str):
         flag = False
         iindex = 1
         pindex = 1
@@ -125,7 +133,7 @@ class CMPiaoliangParser(Parser):
                 ctt = its.find('p').eq(1).text()
             else:
                 ctt = its.find('div').eq(3).text()
-            if  '' == ctt:
+            if '' == ctt:
                 ctt = its.text()
             if None is not ctt:
                 content += ctt + '\n'

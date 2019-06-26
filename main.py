@@ -9,7 +9,6 @@ from url.xingzuo_piaoliang import xingzuo_piaoliang2 as xz_pl2
 from url.xingzuo_piaoliang import xingzuo_piaoliang3 as xz_pl3
 from url.xingzuo_piaoliang import xingzuo_piaoliang4 as xz_pl4
 
-
 if __name__ == '__main__':
     log.info('抓取任务开始执行...')
     spiderFactory = SpiderFactory()

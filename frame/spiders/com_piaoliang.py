@@ -1,22 +1,22 @@
 #!/usr/bin/env python3.6
 # -*- encoding=utf8 -*-
-import time
-from frame.log.log import log
+from frame.base.spider import Spider
 from frame.common.param import *
 from frame.common.xingzuo import XingZuo
-from frame.base.spider import Spider
+from frame.log.log import log
 from frame.parser_factory import get_parser
 
+
 class CMPiaoliangSpider(Spider):
-    def __init__(self):
+    def __init__ (self):
         self._name = COM_PIAOLIANG_NAME
         self._webURL = COM_PIAOLIANG_WEB_URL
         log.info('name:' + self._name + ' url:' + self._webURL + ' spider安装成功!')
 
-    def check(self):
+    def check (self):
         pass
 
-    def run(self):
+    def run (self):
         parser = get_parser().get_parser(COM_PIAOLIANG_NAME)
         for url in self.get_passage_list():
             text = Spider.http_get(url)
@@ -64,7 +64,7 @@ class CMPiaoliangSpider(Spider):
         log.info(self._name + '执行完成!')
         pass
 
-    def get_passage_list(self):
+    def get_passage_list (self):
         if len(self._seedURL) <= 0:
             log.error(self._name + '由于未定义seed url 导致获取book list 失败！')
             return None

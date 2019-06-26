@@ -6,7 +6,7 @@ from urllib.parse import unquote
 
 class Util:
     @staticmethod
-    def check_url(url: str, base_url: str) -> str:
+    def check_url (url: str, base_url: str) -> str:
         if not url.startswith("https://") and url.startswith("http://"):
             url = base_url + '/' + url
         try:
@@ -16,7 +16,7 @@ class Util:
         return url
 
     @staticmethod
-    def time_str_stamp(time_str, fmt: str) -> int:
+    def time_str_stamp (time_str, fmt: str) -> int:
         tm = 0
         try:
             tm = time.mktime(time.strptime(time_str, fmt))
@@ -26,7 +26,7 @@ class Util:
         return tm
 
     @staticmethod
-    def valid(field) -> bool:
+    def valid (field) -> bool:
         if (None is field) or ('' == field.strip()):
             return False
         return True

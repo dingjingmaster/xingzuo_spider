@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.6
 # -*- encoding=utf8 -*-
 import pyquery
+
 """
     需求字段：
         标题、发表日期、浏览量、内容来源或作者、内容、图片url、
@@ -25,42 +26,42 @@ import pyquery
 
 
 class Parser(object):
-    def __init__(self):
+    def __init__ (self):
         self._webURL = ''
         self._parserName = 'base_parser'
 
-    def _parser_passage_url(self, doc: str) -> (bool, str):
+    def _parser_passage_url (self, doc: str) -> (bool, str):
         return
 
-    def _parser_passage_title(self, doc: str) -> (bool, str):
+    def _parser_passage_title (self, doc: str) -> (bool, str):
         return
 
-    def _parser_passage_author(self, doc: str) -> (bool, str):
+    def _parser_passage_author (self, doc: str) -> (bool, str):
         return
 
-    def _parser_passage_read(self, doc: str) -> (bool, str):
+    def _parser_passage_read (self, doc: str) -> (bool, str):
         return
 
-    def _parser_passage_date(self, doc: str) -> (bool, str):
+    def _parser_passage_date (self, doc: str) -> (bool, str):
         return
 
-    def _parser_passage_content(self, doc: str) -> (bool, str, str, str):
+    def _parser_passage_content (self, doc: str) -> (bool, str, str, str):
         return
 
-    def _parser_passage_img_url(self, doc: str) -> (bool, str):
+    def _parser_passage_img_url (self, doc: str) -> (bool, str):
         return
 
-    def _parser_passage_type(self, doc: str) -> (bool, str):
+    def _parser_passage_type (self, doc: str) -> (bool, str):
         return
 
-    def get_parser_name(self):
+    def get_parser_name (self):
         return self._parserName
 
     @staticmethod
-    def _parser(doc: str, rule: str):
+    def _parser (doc: str, rule: str):
         return pyquery.PyQuery(doc).find(rule)
 
-    def parse(self, doc: str, rule='', parse_type=-1):
+    def parse (self, doc: str, rule='', parse_type=-1):
         if self.PARSER_PASSAGE_URL == parse_type:
             if doc == '' or doc == None:
                 return (False, '')

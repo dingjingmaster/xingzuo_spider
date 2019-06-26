@@ -1,7 +1,8 @@
 #!/usr/bin/env python3.6
 # -*- encoding=utf8 -*-
-from frame.log.log import log
 from frame.common.get import Get
+from frame.log.log import log
+
 """
     抓取基类
         参数：
@@ -12,37 +13,37 @@ from frame.common.get import Get
 
 
 class Spider(object):
-    def __init__(self):
+    def __init__ (self):
         self._name = 'base_spider'
         self._webURL = ''
         self._type = 0
 
-    def get_name(self):
+    def get_name (self):
         return self._name
 
-    def get_web_url(self):
+    def get_web_url (self):
         return self._webURL
 
-    def set_book_url(self, book_url: str):
+    def set_book_url (self, book_url: str):
         if None is not book_url and '' != book_url:
             self._bookList.append(book_url)
 
-    def set_seed_url(self, for_url: str, mid_start: int, mid_end: int, back_url: str):
+    def set_seed_url (self, for_url: str, mid_start: int, mid_end: int, back_url: str):
         key = for_url + '|' + back_url
         val = str(mid_start) + '|' + str(mid_end)
         self._seedURL[key] = val
 
-    def set_type(self, type: int):
+    def set_type (self, type: int):
         self._type = type
 
-    def set_seed_urls(self, urls: list):
+    def set_seed_urls (self, urls: list):
         for info in urls:
             for_url, mid_start, mid_end, back_url = info
             key = for_url + '|' + back_url
             val = str(mid_start) + '|' + str(mid_end)
             self._seedURL[key] = val
 
-    def get_passage_list(self):
+    def get_passage_list (self):
         if len(self._seedURL) <= 0:
             log.error(self._name + '由于未定义seed url 导致获取book list 失败！')
             return None
@@ -59,20 +60,24 @@ class Spider(object):
             return None
 
     """ http 获取内容 """
+
     @staticmethod
-    def http_get(url: str, resource_method=1):
+    def http_get (url: str, resource_method=1):
         if resource_method == 1:
             return Get(url).html()
         else:
             return Get(url).binary()
 
     """ 抓取新的书籍信息并保存MySQL """
-    def run(self):
+
+    def run (self):
         pass
 
     """ 针对已抓取书籍检查是否有更新并保存MySQL """
-    def check(self):
+
+    def check (self):
         pass
+
     _name = ''
     _webURL = ''
     _bookList = []
