@@ -37,7 +37,7 @@ class CMPiaoliangSpider(Spider):
                 if not flag:
                     continue
                 passage.set_url(passage_url)
-                """ 检测文章是否存在 """
+                # 检测文章是否存在
                 if passage.exist(passage_url):
                     log.info(name + '已存在!')
                     continue

@@ -2,6 +2,7 @@
 # -*- encoding=utf8 -*-
 from frame.common.param import *
 from frame.xingzuo_parser.com_piaoliang import CMPiaoliangParser
+from frame.xingzuo_parser.net_d1xz import NTD1zxParser
 
 
 class ParserFactory:

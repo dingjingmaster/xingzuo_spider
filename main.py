@@ -9,6 +9,8 @@ from url.xingzuo_piaoliang import xingzuo_piaoliang2 as xz_pl2
 from url.xingzuo_piaoliang import xingzuo_piaoliang3 as xz_pl3
 from url.xingzuo_piaoliang import xingzuo_piaoliang4 as xz_pl4
 
+from url.net_d1xz import net_d1xz5 as d1xz5
+
 if __name__ == '__main__':
     log.info('抓取任务开始执行...')
     spiderFactory = SpiderFactory()
@@ -26,6 +28,10 @@ if __name__ == '__main__':
     """ http://xingzuo.piaoliang.com 结束 """
 
     """ https://www.d1xz.net 开始 """
+    d1xz = spiderFactory.get_spider(NET_D1XZ_NAME)
+    d1xz.set_seed_urls(d1xz5)
+    d1xz.set_type(5)
+    tpool.set_spider(d1xz)
     """ https://www.d1xz.net 结束 """
 
     tpool.run()
