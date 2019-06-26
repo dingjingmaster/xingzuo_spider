@@ -10,16 +10,16 @@ from url.xingzuo_piaoliang import xingzuo_piaoliang3 as xz_pl3
 from url.xingzuo_piaoliang import xingzuo_piaoliang4 as xz_pl4
 
 from url.net_d1xz import net_d1xz5 as d1xz5
-from url.net_d1xz import net_d1xz5 as d1xz6
-from url.net_d1xz import net_d1xz5 as d1xz7
-from url.net_d1xz import net_d1xz5 as d1xz8
-from url.net_d1xz import net_d1xz5 as d1xz9
-from url.net_d1xz import net_d1xz5 as d1xz10
-from url.net_d1xz import net_d1xz5 as d1xz11
-from url.net_d1xz import net_d1xz5 as d1xz12
-from url.net_d1xz import net_d1xz5 as d1xz13
-from url.net_d1xz import net_d1xz5 as d1xz14
-from url.net_d1xz import net_d1xz5 as d1xz15
+from url.net_d1xz import net_d1xz6 as d1xz6
+from url.net_d1xz import net_d1xz7 as d1xz7
+from url.net_d1xz import net_d1xz8 as d1xz8
+from url.net_d1xz import net_d1xz9 as d1xz9
+from url.net_d1xz import net_d1xz10 as d1xz10
+from url.net_d1xz import net_d1xz11 as d1xz11
+from url.net_d1xz import net_d1xz12 as d1xz12
+from url.net_d1xz import net_d1xz13 as d1xz13
+from url.net_d1xz import net_d1xz14 as d1xz14
+from url.net_d1xz import net_d1xz15 as d1xz15
 
 if __name__ == '__main__':
     log.info('抓取任务开始执行...')
