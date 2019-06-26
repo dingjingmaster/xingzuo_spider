@@ -29,11 +29,8 @@ if __name__ == '__main__':
     """ http://xingzuo.piaoliang.com 开始 """
     # xz2 = spiderFactory.get_spider(COM_PIAOLIANG_NAME)
     # xz2.set_seed_urls(xz_pl2)
-    # xz2.set_type(2)
     # xz2.set_seed_urls(xz_pl3)
-    # xz2.set_type(3)
     # xz2.set_seed_urls(xz_pl4)
-    # xz2.set_type(4)
     # tpool.set_spider(xz2)
     """ http://xingzuo.piaoliang.com 结束 """
 

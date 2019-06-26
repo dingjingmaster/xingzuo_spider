@@ -19,6 +19,9 @@ class CMPiaoliangSpider(Spider):
     def run (self):
         parser = get_parser().get_parser(COM_PIAOLIANG_NAME)
         for url in self.get_passage_list():
+            arr = url.split('|')
+            url = arr[0]
+            type = int(arr[1])
             text = Spider.http_get(url)
             if '' == text:
                 continue
@@ -56,7 +59,7 @@ class CMPiaoliangSpider(Spider):
                     passage.set_img(img)
                     passage.set_textTop(top)
                     passage.set_textBottom(bottom)
-                    passage.set_type(self._type)
+                    passage.set_type(type)
                     """ 保存文章信息 """
                     passage.save_passage_info()
                 else:
@@ -72,11 +75,12 @@ class CMPiaoliangSpider(Spider):
             for ik, iv in self._seedURL.items():
                 arr1 = ik.split('|')
                 arr2 = iv.split('|')
+                arr3 = arr1[1].split('-')
                 for x in range(int(arr2[0]), int(arr2[1]) + 1):
                     if x == 1:
-                        self._bookList.append(arr1[0][:-1] + arr1[1])
+                        self._bookList.append(arr1[0][:-1] + arr1[1] + '|' + arr3[1])
                         continue
-                    self._bookList.append(arr1[0] + str(x) + arr1[1])
+                    self._bookList.append(arr1[0] + str(x) + arr3[0] + '|' + arr3[1])
             for i in self._bookList:
                 yield i
         except Exception as e:
