@@ -63,7 +63,6 @@ class NTD1zxSpider(Spider):
                     log.warn(name + '抓取失败！')
         log.info(self._name + '执行完成!')
 
-
     def get_passage_list (self):
         if len(self._seedURL) <= 0:
             log.error(self._name + '由于未定义seed url 导致获取book list 失败！')
