@@ -18,7 +18,7 @@ class COMXzwSpider(Spider):
     def check (self):
         pass
 
-    def run(self):
+    def run (self):
         parser = get_parser().get_parser(COM_XZW_NAME)
         for url in self.get_passage_list():
             arr = url.split('|')
