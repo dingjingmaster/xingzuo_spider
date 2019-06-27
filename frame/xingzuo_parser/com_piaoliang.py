@@ -136,6 +136,7 @@ class CMPiaoliangParser(Parser):
             if '' == ctt:
                 ctt = its.text()
             if None is not ctt:
+                ctt = re.sub(r'(\n|\r| )', '', ctt)
                 content += ctt + '\n'
             pindex += 1
         imgUrl = ''

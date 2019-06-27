@@ -3,23 +3,10 @@
 from frame.log.log import log
 from frame.common.param import *
 from frame.thread import ThreadPool
+from url.net_d1xz import net_d1xz as d1xz
+from url.com_xzw import com_xzw as com_xzw
 from frame.spider_factory import SpiderFactory
-
-from url.xingzuo_piaoliang import xingzuo_piaoliang2 as xz_pl2
-from url.xingzuo_piaoliang import xingzuo_piaoliang3 as xz_pl3
-from url.xingzuo_piaoliang import xingzuo_piaoliang4 as xz_pl4
-
-from url.net_d1xz import net_d1xz5 as d1xz5
-from url.net_d1xz import net_d1xz6 as d1xz6
-from url.net_d1xz import net_d1xz7 as d1xz7
-from url.net_d1xz import net_d1xz8 as d1xz8
-from url.net_d1xz import net_d1xz9 as d1xz9
-from url.net_d1xz import net_d1xz10 as d1xz10
-from url.net_d1xz import net_d1xz11 as d1xz11
-from url.net_d1xz import net_d1xz12 as d1xz12
-from url.net_d1xz import net_d1xz13 as d1xz13
-from url.net_d1xz import net_d1xz14 as d1xz14
-from url.net_d1xz import net_d1xz15 as d1xz15
+from url.xingzuo_piaoliang import xingzuo_piaoliang as xz_pl
 
 if __name__ == '__main__':
     log.info('抓取任务开始执行...')
@@ -27,28 +14,22 @@ if __name__ == '__main__':
     tpool = ThreadPool()
 
     """ http://xingzuo.piaoliang.com 开始 """
-    # xz2 = spiderFactory.get_spider(COM_PIAOLIANG_NAME)
-    # xz2.set_seed_urls(xz_pl2)
-    # xz2.set_seed_urls(xz_pl3)
-    # xz2.set_seed_urls(xz_pl4)
-    # tpool.set_spider(xz2)
+    # xz = spiderFactory.get_spider(COM_PIAOLIANG_NAME)
+    # xz.set_seed_urls(xz_pl)
+    # tpool.set_spider(xz)
     """ http://xingzuo.piaoliang.com 结束 """
 
     """ https://www.d1xz.net 开始 """
-    d1xz = spiderFactory.get_spider(NET_D1XZ_NAME)
-    d1xz.set_seed_urls(d1xz5)
-    d1xz.set_seed_urls(d1xz6)
-    d1xz.set_seed_urls(d1xz7)
-    d1xz.set_seed_urls(d1xz8)
-    d1xz.set_seed_urls(d1xz9)
-    d1xz.set_seed_urls(d1xz10)
-    d1xz.set_seed_urls(d1xz11)
-    d1xz.set_seed_urls(d1xz12)
-    d1xz.set_seed_urls(d1xz13)
-    d1xz.set_seed_urls(d1xz14)
-    d1xz.set_seed_urls(d1xz15)
-    tpool.set_spider(d1xz)
+    # d1xz = spiderFactory.get_spider(NET_D1XZ_NAME)
+    # d1xz.set_seed_urls(d1xz)
+    # tpool.set_spider(d1xz)
     """ https://www.d1xz.net 结束 """
+
+    """ https://www.xzw.com 开始 """
+    xzw = spiderFactory.get_spider(COM_XZW_NAME)
+    xzw.set_seed_urls(com_xzw)
+    tpool.set_spider(xzw)
+    """ https://www.xzw.com 结束 """
 
     tpool.run()
     log.info('抓取任务完成!')
